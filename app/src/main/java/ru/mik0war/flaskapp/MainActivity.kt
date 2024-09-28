@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             val pass = binding.editTextText2.text.toString()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.2.110:5000")
+                .baseUrl("http://192.168.1.9:5000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.Main) {
                 try {
                     withContext(Dispatchers.IO) {
-                        service.createUser(UserData(login, pass))
+                        service.createUser(UserData(login, pass, "/uploads/СДО.PNG"))
                     }
 
                     binding.editTextText.text.clear()
