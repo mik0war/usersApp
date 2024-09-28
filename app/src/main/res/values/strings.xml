@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FlaskApp</string>
+    <string name="login_text">login</string>
+    <string name="pass_text">password</string>
+</resources>
