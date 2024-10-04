@@ -7,6 +7,7 @@ import com.squareup.picasso.Picasso
 import ru.mik0war.flaskapp.databinding.ItemLayoutBinding
 
 class UsersListAdapter(
+    private val baseUrl: String,
     private var list: List<UserData>
 ) : RecyclerView.Adapter<UsersListViewHolder>(){
 
@@ -18,7 +19,7 @@ class UsersListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersListViewHolder {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context))
 
-        return UsersListViewHolder(binding)
+        return UsersListViewHolder(baseUrl, binding)
     }
 
     override fun getItemCount() = list.size
@@ -31,6 +32,7 @@ class UsersListAdapter(
 }
 
 class UsersListViewHolder(
+    private val baseUrl : String,
     private val binding: ItemLayoutBinding
 ) : RecyclerView.ViewHolder(binding.root){
 
@@ -39,9 +41,25 @@ class UsersListViewHolder(
         binding.passView.text = userData.password
 
         Picasso.get()
-            .load("http://192.168.1.9:5000" + userData.link)
+            .load(baseUrl + userData.link)
             .into(binding.imageView)
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
