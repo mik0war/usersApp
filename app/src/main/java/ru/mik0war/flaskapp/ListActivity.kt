@@ -15,6 +15,8 @@ class ListActivity : AppCompatActivity() {
 
         binding = ActivityListBinding.inflate(layoutInflater)
 
+        setContentView(binding.root)
+
         val baseUrl = (application as UsersApp).baseUrl
 
         val adapter = UsersListAdapter(baseUrl, emptyList())

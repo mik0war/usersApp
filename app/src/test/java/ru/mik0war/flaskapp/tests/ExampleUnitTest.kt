@@ -1,4 +1,4 @@
-package ru.mik0war.flaskapp
+package ru.mik0war.flaskapp.tests
 
 import org.junit.Test
 
