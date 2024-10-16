@@ -6,5 +6,7 @@ data class UserData(
     val login: String,
     val password: String,
     @SerializedName("image_url")
-    val link: String
+    val link: String,
+    @SerializedName("user_order")
+    val id: Int = 0
 )

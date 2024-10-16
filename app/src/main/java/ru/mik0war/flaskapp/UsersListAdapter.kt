@@ -8,7 +8,8 @@ import ru.mik0war.flaskapp.databinding.ItemLayoutBinding
 
 class UsersListAdapter(
     private val baseUrl: String,
-    private var list: List<UserData>
+    private var list: List<UserData>,
+    private val lambda : (id: Int) -> Unit
 ) : RecyclerView.Adapter<UsersListViewHolder>(){
 
     fun update(newList: List<UserData>){
@@ -19,7 +20,7 @@ class UsersListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersListViewHolder {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context))
 
-        return UsersListViewHolder(baseUrl, binding)
+        return UsersListViewHolder(baseUrl, binding, lambda)
     }
 
     override fun getItemCount() = list.size
@@ -33,7 +34,8 @@ class UsersListAdapter(
 
 class UsersListViewHolder(
     private val baseUrl : String,
-    private val binding: ItemLayoutBinding
+    private val binding: ItemLayoutBinding,
+    private val lambda : (id: Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root){
 
     fun bind(userData: UserData){
@@ -43,6 +45,10 @@ class UsersListViewHolder(
         Picasso.get()
             .load(baseUrl + userData.link)
             .into(binding.imageView)
+
+        binding.btnListItem.setOnClickListener {
+            lambda(userData.id)
+        }
     }
 
 }

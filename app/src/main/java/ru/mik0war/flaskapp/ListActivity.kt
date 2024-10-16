@@ -19,7 +19,16 @@ class ListActivity : AppCompatActivity() {
 
         val baseUrl = (application as UsersApp).baseUrl
 
-        val adapter = UsersListAdapter(baseUrl, emptyList())
+        val lambda : (id: Int) -> Unit = { id ->
+
+            val intent = Intent(this, ItemListActivity::class.java)
+            val bundle = Bundle()
+            bundle.putInt("user_id", id)
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
+
+        val adapter = UsersListAdapter(baseUrl, emptyList(), lambda)
         binding.recyclerView.adapter = adapter
 
         val listViewModel = (application as UsersApp).listViewModel
