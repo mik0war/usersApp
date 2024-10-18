@@ -49,4 +49,6 @@ class TestService : UserService {
     }
 
     override suspend fun getUsers(): List<UserData> = innerList
+
+    override suspend fun getUser(id: Int) = innerList[id]
 }

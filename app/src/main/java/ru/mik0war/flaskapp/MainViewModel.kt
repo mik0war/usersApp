@@ -15,13 +15,13 @@ class MainViewModel(
 
     fun createUser(binding: ActivityMainBinding) = viewModelScope.launch(dispatcher) {
         try {
-            val login = binding.editTextText.text.toString()
-            val pass = binding.editTextText2.text.toString()
+            val login = binding.loginText.text.toString()
+            val pass = binding.passwordText.text.toString()
 
             repository.createUser(login, pass)
 
-            binding.editTextText.text.clear()
-            binding.editTextText2.text.clear()
+            binding.loginText.text.clear()
+            binding.passwordText.text.clear()
         } catch (e: Exception) {
             Toast.makeText(
                 binding.root.context, "Login already exists",

@@ -46,7 +46,7 @@ class UsersListViewHolder(
             .load(baseUrl + userData.link)
             .into(binding.imageView)
 
-        binding.btnListItem.setOnClickListener {
+        binding.root.setOnClickListener {
             lambda(userData.id)
         }
     }
