@@ -9,15 +9,15 @@ class Repository(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
-    suspend fun getUsers(): List<UserData>{
-        return withContext(dispatcher){
-            return@withContext service.getUsers()
-        }
-    }
-
     suspend fun getUser(id: Int): UserData{
         return withContext(dispatcher){
             return@withContext service.getUser(id)
+        }
+    }
+
+    suspend fun getUsers(): List<UserData>{
+        return withContext(dispatcher){
+            return@withContext service.getUsers()
         }
     }
 

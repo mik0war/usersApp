@@ -12,7 +12,7 @@ class ItemListViewModel(
     private val baseUrl: String
 ) : ViewModel() {
 
-    fun getUserData(id: Int, binding: ActivityItemListBinding) = viewModelScope.launch(Dispatchers.Main){
+    fun getUserData(id: Int, binding: ActivityItemListBinding) = viewModelScope.launch(Dispatchers.Main) {
 
         val userData = repository.getUser(id)
 
